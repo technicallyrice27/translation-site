@@ -1,0 +1,28 @@
+{% extends 'translations/base.html' %}
+
+{% block content %}
+
+{% if not posts %}
+<div class="summary-title">Nothing here, yet!</div>
+{% endif %}
+
+{% for post in posts %}
+<hr>
+<h2 class="item-title">{{ post.title }}</h2>
+
+<p class="item-author">
+    by {{ post.author }}
+</p>
+
+<p class="posted-on"><span class="glyphicon glyphicon-time"></span> Posted on {{ post.posted_date }}</p>
+
+<br/>
+<div class="summary-text"><a href="{% url 'post' pk=post.pk %}">
+{{ post.text | safe | truncatewords:20 }} Click for more
+</a>
+</div>
+<hr>
+
+{% endfor %}
+
+{% endblock %}

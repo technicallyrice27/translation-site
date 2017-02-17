@@ -1,0 +1,50 @@
+{% extends 'translations/base.html' %}
+
+{% block content %}
+
+<div class="front-page-content">
+<h2 id="welcome-text">Welcome to OP Translations</h2>
+<h3 id="news-title">Latest News</h3>
+
+<h3 class="item-title">{{ latest_news.title }}</h3>
+
+<p class="item-author">
+    by {{ latest_news.author }}
+</p>
+
+<p class="posted-on"><span class="glyphicon glyphicon-time"></span> Posted on {{ latest_news.posted_date }}</p>
+
+<br/>
+<div class="summary-text">{{ latest_news.text | safe | truncatewords:50 }} <a href="{% url 'post' pk=latest_news.pk %}">
+Click for more</a>
+</div>
+<h3 id="about">About</h3>
+<div id="about-text">
+    <p>OP Translations is a new Light Novel/Web Novel translation group that will specialize in stories with overpowered main characters.
+    Who doesn't like those characters? It's always a good time to watch the side cast oogle in awe of the main character's abilities.
+    </p>
+    <p>We're a very small team (one translator and one editor) at the moment, so we'll be concentrating on one project at a time.
+        Our first project is, in English, Counter Stop!, and you might have guessed, there's a wonderfully OP character in it.
+        It's a web novel, meaning the original text is not professionally edited, and thus a bit rough at times, which leads me in to how we translate.
+    </p>
+    <p> The philosphy here is that if we are going to read in English, we want it to read like a native English text. We're not saying we'll
+        be winning a Pulitzer or a Hugo or anything, but we most certainly will not be directly translating the text and leaving it be.
+        We will <strong>always</strong> preserve the orignal meaning and intention of the work, however.
+    </p>
+    <p>The site itself was designed as a side project during a few days off from translating, and will be improved upon over time.
+        For now, it's just a plain site that's functional enough read with on any device.
+        You can also use the 'Invert Colors' option in the navigation to flip the colors, if that works better for your eyes.
+    </p>
+
+<h3 id="current-projects">Current Projects</h3>
+{% if not projects %}
+    <div class="summary-text">No projects, yet!</div>
+    {% endif %}
+{% for project in projects %}
+<p id="project-list">
+<a href="{% url 'projects' %}">{{ project.title }}</a> -
+<a href="{% url 'table_of_contents' ppk=project.pk %}">Table of Contents</a>
+</p>
+{% endfor %}
+</div>
+{% endblock %}

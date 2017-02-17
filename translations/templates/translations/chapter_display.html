@@ -1,0 +1,55 @@
+{% extends 'translations/base.html' %}
+
+{% block content %}
+
+<div class="book-title"> {{ chapter.project.title }} </div>
+<div class="chapter-title">
+    {% if chapter.number == 0 %}
+        Prologue - {{ chapter.title }}
+    {% else %}
+        Chapter {{ chapter.number }} - {{ chapter.title }}
+    {% endif %}
+</div>
+<div class="date-posted">Posted: {{ chapter.posted_date }}</div>
+<br/>
+<nav aria-label="upper_nav">
+    <ul class="pager">
+    {% if prevch != None %}
+        <li class="previous"><a class="chapter-nav" href="{% url 'chapter_display' pk=prevch.pk %}"><span aria-hidden="true">&larr;</span>Previous</a></li>
+    {% endif %}
+    {% if nextch != None %}
+    <li class="next"><a class="chapter-nav" href="{% url 'chapter_display' pk=nextch.pk %}">Next<span aria-hidden="true">&rarr;</span></a></li>
+    {% endif %}
+    </ul>
+</nav>
+<div class="toc-link"><a href="{% url 'table_of_contents' ppk=chapter.project.pk %}">Table of Contents</a></div>
+<br/>
+<div class="contents"> {{ chapter.content|safe }}</div>
+<br/>
+<div class="toc-link"><a href="{% url 'table_of_contents' ppk=chapter.project.pk %}">Table of Contents</a></div>
+<nav aria-label="lower_nav">
+    <ul class="pager">
+    {% if prevch != None %}
+        <li class="previous"><a class="chapter-nav" href="{% url 'chapter_display' pk=prevch.pk %}"><span aria-hidden="true">&larr;</span> Previous</a></li>
+    {% endif %}
+    {% if nextch != None %}
+    <li class="next"><a class="chapter-nav" href="{% url 'chapter_display' pk=nextch.pk %}">Next <span aria-hidden="true">&rarr;</span></a></li>
+    {% endif %}
+    </ul>
+</nav>
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+this.page.url = 'https://www.optranslations.net/chapters/{{ chapter.pk }}/';  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '/chapters/{{ chapter.pk }}/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//optranslations.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endblock %}

@@ -1,0 +1,185 @@
+html, body {
+    height: 100%;
+}
+
+a {
+    color: green;
+}
+
+.front-page-content {
+    text-align: center;
+}
+
+#welcome-text {
+    font-family: 'Henny Penny', cursive;
+    font-size: 300%;
+}
+
+#about {
+    font-family: 'Old Standard TT', serif;
+    font-size: 200%;
+    padding-top: 2em;
+}
+
+#current-projects {
+    font-family: 'Old Standard TT', serif;
+    font-size: 200%;
+    padding-top:1em;
+    text-align: center;
+}
+
+#project-list {
+    font-family: 'Sahitya', serif !important;
+    font-size: 150%;
+    text-align: center;
+}
+
+#about-text {
+    font-family: 'Sahitya', serif;
+    text-align: left;
+}
+
+.dark-theme body {
+    background: #383838;
+    color: floralwhite;
+}
+
+.light-theme body {
+    background: floralwhite;
+    color: #383838;
+}
+
+
+.page-header {
+    background-color: seagreen;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: antiquewhite;
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: seagreen;
+    color: antiquewhite;
+    text-align: center;
+    font-family: 'Old Standard TT', serif;
+    font-size: 125%;
+}
+
+.list-group-item {
+    background:floralwhite;
+    font-family: 'Old Standard TT', serif;
+    font-size: 125%;
+}
+
+.list-group-item a {
+    display: block;
+    text-align: center;
+}
+
+.navbar-static-top {
+    background: seagreen;
+}
+
+.nav.navbar-nav li a {
+    color: antiquewhite;
+    font-family: 'Old Standard TT', serif;
+    font-size: 125%;
+}
+
+.toc-link {
+    text-align: center;
+    font-family: 'Old Standard TT', serif;
+    font-size: 125%;
+}
+
+.title {
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.chapter-nav {
+    font-family: 'Old Standard TT', serif;
+}
+
+.contents p {
+    font-family: 'Sahitya', serif !important;
+    font-size: 110%;
+    line-height: 1.9;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.contents span {
+    font-family: 'Sahitya', serif !important;
+    font-size: 150%;
+}
+
+.book-title {
+    font-family: 'Sahitya', serif !important;
+    font-size: 175%;
+}
+
+.chapter-title {
+    font-family: 'Sahitya', serif !important;
+    font-size: 150%;
+}
+
+.date-posted {
+    font-family: 'Sahitya', serif !important;
+    font-size: 100%;
+}
+
+.item-title {
+    font-family: 'Old Standard TT', serif;
+    text-align: center;
+}
+
+.item-author {
+    font-family: 'Sahitya', serif;
+    line-height: 0;
+    text-align: center;
+}
+
+.item-sub-title {
+    font-family: 'Sahitya', serif;
+    padding-top: 1em;
+    text-align: center;
+}
+
+.summary-title {
+    font-family: 'Sahitya', serif;
+    font-size: 125%;
+    padding-top: 2em;
+    padding-bottom: .5em;
+    text-align: center;
+}
+
+.summary-text {
+    font-family: 'Sahitya', serif;
+    text-align: center;
+}
+
+.item-translators {
+    font-family: 'Sahitya', serif;
+    text-align: center;
+}
+
+.item-editors {
+    font-family: 'Sahitya', serif;
+}
+
+.posted-on {
+    font-family: 'Sahitya', serif;
+    text-align: center;
+    padding-top: 0.8em;
+}
+
+.back-link {
+    font-family: 'Old Standard TT', serif;
+    font-size: 125%;
+}

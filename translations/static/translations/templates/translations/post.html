@@ -1,0 +1,22 @@
+{% extends 'translations/news.html' %}
+
+{% block content %}
+
+<hr>
+<h2 class="item-title">{{ post.title }}</h2> 
+
+<p class="item-author">
+    by {{ post.author }}
+</p>
+
+<p class="posted-on"><span class="glyphicon glyphicon-time"></span> Posted on {{ post.posted_date }}</p>
+
+<br/>
+<div class="summary-text">
+{{ post.text | safe }}
+</div>
+<hr>
+
+<div class="back-link"><a href="{% url 'news' %}">Back</a></div>
+
+{% endblock %}
