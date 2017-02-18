@@ -1,9 +1,10 @@
 {% extends 'translations/base.html' %}
 
 {% block content %}
-<h3>{{ project_title }} Table of Contents</h3>
+<div id="toc-page">
+<h3 style="font-family: Old Standard TT, serif;">{{ project_title }} Table of Contents</h3>
 {% for chapter in chapters %}
-    <div><a href="{% url 'chapter_display' pk=chapter.pk %}">
+    <div style="font-family: Old Standard TT, serif;"><a href="{% url 'chapter_display' pk=chapter.pk %}">
         {% if chapter.number == 0 %}
             Prologue - {{ chapter.title }}
         {% else %}
@@ -12,4 +13,5 @@
         </a>
     </div>
 {% endfor %}
+</div>
 {% endblock %}

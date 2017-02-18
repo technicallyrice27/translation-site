@@ -6,6 +6,11 @@ a {
     color: green;
 }
 
+.item-title {
+    font-family: 'Old Standard TT', serif !important;
+    text-align: center;
+}
+
 .front-page-content {
     text-align: center;
 }
@@ -134,11 +139,6 @@ a {
     font-size: 100%;
 }
 
-.item-title {
-    font-family: 'Old Standard TT', serif;
-    text-align: center;
-}
-
 .item-author {
     font-family: 'Sahitya', serif;
     line-height: 0;
@@ -213,4 +213,8 @@ a {
     top: 100%;
     right: 0;
     left: 0;
+}
+
+#toc-page {
+    font-family: 'Old Standard TT', serif;
 }
