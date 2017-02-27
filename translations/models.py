@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 # Create your models here.
 class Translator(models.Model):
@@ -35,12 +36,19 @@ class Project(models.Model):
     summary = models.TextField()
     translators = models.ManyToManyField(Translator, blank=True)
     editors = models.ManyToManyField(Editor, blank=True)
-    #translator = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='translator', null=True, on_delete=models.SET_NULL)
-    #editor = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='editor', on_delete=models.SET_NULL, null=True, blank=True)
-    #editor_two = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='editor_two', on_delete=models.SET_NULL, null=True, blank=True)
+    slug = models.SlugField(null=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # Newly created object, so set slug
+            self.slug = slugify(self.title)
+            if len(self.slug) > 50:
+                self.slug = self.slug[:50]
+        # Else normal save
+        super(Project, self).save(*args, **kwargs)
 
 class Chapter(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -66,6 +74,28 @@ class Post(models.Model):
     text = models.TextField()
     posted_date = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
+    slug = models.SlugField(unique=True, null=True, editable=False)
 
     def __str__(self):
         return self.title
+
+    def _get_unique_slug(self):
+        slug = slugify(self.title)
+        unique_slug = slug
+        num = 1
+        while Post.objects.filter(slug=unique_slug).exists():
+            unique_slug = '{}-{}'.format(slug, num)
+            num += 1
+        # if > 50 then cut so it is first 50 of title - unique number + hyphen
+        # then add number and hyphen back to string
+        if len(unique_slug) > 50:
+            unique_slug = unique_slug[:50-(num+1)]
+            unique_slug = '{}-{}'.format(unique_slug, num)
+        return unique_slug
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # Newly created object, so set slug
+            self.slug = self._get_unique_slug()
+        # Else normal save
+        super(Project, self).save(*args, **kwargs)
