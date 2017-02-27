@@ -13,9 +13,12 @@ class LatestChapters(Feed):
 
     def item_title(self, item):
         #title = item.project.title + ' - ' + item.project.jpengtitle + ' - ' + 'Chapter ' + item.number + ' - ' item.title
-        title = '{} - {} - Chapter {} - {} - Posted {}'.format(item.project.title, 
-        item.project.jpengtitle, item.number, item.title, item.posted_date)
+        title = '{} - {} - Chapter {} - {}'.format(item.project.title, 
+        item.project.jpengtitle, item.number, item.title)
         return title
+    
+    def item_pubdate(self, item):
+        return item.posted_date
     
     def item_description(self, item):
         return (item.content[:100] + '...') if len(item.content) > 100 else item.content
