@@ -13,8 +13,8 @@ class LatestChapters(Feed):
 
     def item_title(self, item):
         #title = item.project.title + ' - ' + item.project.jpengtitle + ' - ' + 'Chapter ' + item.number + ' - ' item.title
-        title = '{} - {} - Chapter {} - {}'.format(item.project.title, 
-        item.project.jpengtitle, item.number, item.title)
+        title = '{} - {} - Chapter {} - {} - Posted {}'.format(item.project.title, 
+        item.project.jpengtitle, item.number, item.title, item.posted_date)
         return title
     
     def item_description(self, item):
