@@ -6,7 +6,8 @@ from django.http import HttpResponse
 def home(request):
     latest_news = Post.objects.latest('posted_date')
     projects = Project.objects.all().order_by('title')
-    return render(request, 'translations/home.html', {'latest_news': latest_news, 'projects': projects})
+    latest_chapters = [Chapter.objects.filter(project__pk=project.pk).order_by('-number')[0] for project in projects]
+    return render(request, 'translations/home.html', {'latest_news': latest_news, 'latest_chapters': latest_chapters, 'projects': projects})
 
 def projects(request):
     projects = Project.objects.all().order_by('title')

@@ -55,8 +55,9 @@
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
-this.page.url = 'https://www.optranslations.net/chapters/{{ chapter.pk }}/';  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = '/chapters/{{ chapter.pk }}/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.url = 'https://www.optranslations.net/projects/{{ chapter.project.slug }}/chapter/{{ chapter.number }}/';  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '/projects/{{ chapter.project.slug }}/chapter/{{ chapter.number }}/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.title = '{{ chapter.project.title }} Chapter {{ chapter.number }}';
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE

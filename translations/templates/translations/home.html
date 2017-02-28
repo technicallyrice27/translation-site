@@ -19,7 +19,12 @@
     <br/><a href="{% url 'post' slug=latest_news.slug %}">
 Click for more</a>
 </div>
-<h3 id="about">About</h3>
+<h3 style="font-family: Old Standard TT, serif; font-size: 200%;">Latest Chapters</h3>
+{% for chapter in latest_chapters %}
+<h3 class="item-title" style="font-family: Old Standard TT, serif; font-size: 125%;">{{ chapter.project.title }} - 
+    <a href="{% url 'chapter_display' pt=chapter.project.slug num=chapter.number %}"> Chapter {{ chapter.number }} - {{ chapter.title }}</a></h3>
+{% endfor %}
+<h3 id="about" style="padding-top: 1em">About</h3>
 <div id="about-text">
     <p>OP Translations is a new Light Novel/Web Novel translation group that will specialize in stories with overpowered main characters.
     Who doesn't like those characters? It's always a good time to watch the side cast oogle in awe of the main character's abilities.
