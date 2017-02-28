@@ -21,14 +21,8 @@
     {% for editor in project.editors.all %}
     {{ editor.persona }}{% if not forloop.last %},{% endif %}
     {% endfor %}
-<div class="summary-title">
-Summary:
-</div>
-<div class="summary-text">
-{{ project.summary | safe }}
-</div>
 <br/>
-<div class="toc-link"><a href="{% url 'project_page' pt=project.slug %}">Table of Contents</a></div>
+<div class="toc-link"><a href="{% url 'project_page' pt=project.slug %}">Project Page & Table of Contents</a></div>
 <hr>
 
 {% endfor %}

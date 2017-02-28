@@ -43,8 +43,7 @@ Click for more</a>
     {% endif %}
 {% for project in projects %}
 <p id="project-list">
-<a href="{% url 'projects' %}">{{ project.title }} ({{ project.jpengtitle }})</a> -
-<a href="{% url 'project_page' pt=project.slug %}">Table of Contents</a>
+<a href="{% url 'project_page' pt=project.slug %}">{{ project.title }} ({{ project.jpengtitle }})</a>
 </p>
 {% endfor %}
 </div>
