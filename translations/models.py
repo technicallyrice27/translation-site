@@ -36,19 +36,19 @@ class Project(models.Model):
     summary = models.TextField()
     translators = models.ManyToManyField(Translator, blank=True)
     editors = models.ManyToManyField(Editor, blank=True)
-    slug = models.SlugField(null=True)
+    slug = models.SlugField(null=True, blank=True)
 
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
-        if not self.id:
-            # Newly created object, so set slug
+        if not self.id and not self.slug:
+            # Newly created object without custom slug
             self.slug = slugify(self.title)
             if len(self.slug) > 50:
                 self.slug = self.slug[:50]
         # Else normal save
-        super(Project, self).save(*args, **kwargs)
+        super().save()
 
 class Chapter(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
@@ -98,4 +98,4 @@ class Post(models.Model):
             # Newly created object, so set slug
             self.slug = self._get_unique_slug()
         # Else normal save
-        super(Project, self).save(*args, **kwargs)
+        super().save()
