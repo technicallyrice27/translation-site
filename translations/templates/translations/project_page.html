@@ -1,14 +1,9 @@
 {% extends 'translations/base.html' %}
 
 {% block content %}
-{% if not projects %}
-<div class="summary-title">Nothing here, yet!</div>
-{% endif %}
-
-{% for project in projects %}
 <hr>
 <h2 class="item-title">{{ project.title }}</h2>
-
+<div style="text-align: left !important">
 <p class="item-author">
     by {{ project.author }}
 </p>
@@ -21,15 +16,28 @@
     {% for editor in project.editors.all %}
     {{ editor.persona }}{% if not forloop.last %},{% endif %}
     {% endfor %}
+</p>
 <div class="summary-title">
 Summary:
 </div>
 <div class="summary-text">
 {{ project.summary | safe }}
 </div>
+</div>
 <br/>
-<div class="toc-link"><a href="{% url 'project_page' pt=project.slug %}">Table of Contents</a></div>
 <hr>
-
+<div id="toc-page">
+<h3 style="font-family: Old Standard TT, serif;">{{ project_title }} Table of Contents</h3>
+{% for chapter in chapters %}
+    <div style="font-family: Old Standard TT, serif; padding-top:0.4em">
+        <a href="{% url 'chapter_display' pt=chapter.project.slug num=chapter.number %}">
+        {% if chapter.number == 0 %}
+            Prologue - {{ chapter.title }}
+        {% else %}
+            Chapter {{ chapter.number }} - {{ chapter.title }}
+        {% endif %}
+        </a>
+    </div>
 {% endfor %}
+</div>
 {% endblock %}

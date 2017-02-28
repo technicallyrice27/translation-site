@@ -15,25 +15,40 @@
 <nav aria-label="upper_nav">
     <ul class="pager">
     {% if prevch != None %}
-        <li class="previous"><a class="chapter-nav" href="{% url 'chapter_display' pk=prevch.pk %}"><span aria-hidden="true">&larr;</span>Previous</a></li>
+        <li class="previous">
+        <a class="chapter-nav" href="{% url 'chapter_display' pt=chapter.project.slug num=prevch.number %}">
+            <span aria-hidden="true">&larr;</span>Previous</a></li>
     {% endif %}
     {% if nextch != None %}
-    <li class="next"><a class="chapter-nav" href="{% url 'chapter_display' pk=nextch.pk %}">Next<span aria-hidden="true">&rarr;</span></a></li>
+    <li class="next"><a class="chapter-nav" href="{% url 'chapter_display' pt=chapter.project.slug num=nextch.number %}">
+        Next<span aria-hidden="true">&rarr;</span></a></li>
     {% endif %}
     </ul>
 </nav>
-<div class="toc-link"><a href="{% url 'table_of_contents' ppk=chapter.project.pk %}">Table of Contents</a></div>
+<div class="toc-link">
+    <a href="{% url 'project_page' pt=chapter.project.slug %}">
+        Table of Contents
+    </a>
+</div>
 <br/>
 <div class="contents"> {{ chapter.content|safe }}</div>
 <br/>
-<div class="toc-link"><a href="{% url 'table_of_contents' ppk=chapter.project.pk %}">Table of Contents</a></div>
+<div class="toc-link">
+    <a href="{% url 'project_page' pt=chapter.project.slug %}">
+        Table of Contents
+    </a>
+</div>
 <nav aria-label="lower_nav">
     <ul class="pager">
     {% if prevch != None %}
-        <li class="previous"><a class="chapter-nav" href="{% url 'chapter_display' pk=prevch.pk %}"><span aria-hidden="true">&larr;</span> Previous</a></li>
+        <li class="previous">
+            <a class="chapter-nav" href="{% url 'chapter_display' pt=chapter.project.slug num=prevch.number %}">
+                <span aria-hidden="true">&larr;</span> Previous</a></li>
     {% endif %}
     {% if nextch != None %}
-    <li class="next"><a class="chapter-nav" href="{% url 'chapter_display' pk=nextch.pk %}">Next <span aria-hidden="true">&rarr;</span></a></li>
+    <li class="next">
+    <a class="chapter-nav" href="{% url 'chapter_display' pt=chapter.project.slug num=nextch.number %}">
+        Next <span aria-hidden="true">&rarr;</span></a></li>
     {% endif %}
     </ul>
 </nav>

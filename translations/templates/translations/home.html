@@ -15,7 +15,8 @@
 <p class="posted-on"><span class="glyphicon glyphicon-time"></span> Posted on {{ latest_news.posted_date }}</p>
 
 <br/>
-<div class="summary-text">{{ latest_news.text | safe | truncatewords:50 }} <a href="{% url 'post' pk=latest_news.pk %}">
+<div class="summary-text">{{ latest_news.text | safe | truncatewords:50 }} 
+    <br/><a href="{% url 'post' slug=latest_news.slug %}">
 Click for more</a>
 </div>
 <h3 id="about">About</h3>
@@ -43,7 +44,7 @@ Click for more</a>
 {% for project in projects %}
 <p id="project-list">
 <a href="{% url 'projects' %}">{{ project.title }} ({{ project.jpengtitle }})</a> -
-<a href="{% url 'table_of_contents' ppk=project.pk %}">Table of Contents</a>
+<a href="{% url 'project_page' pt=project.slug %}">Table of Contents</a>
 </p>
 {% endfor %}
 </div>

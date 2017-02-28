@@ -17,7 +17,8 @@
 <p class="posted-on"><span class="glyphicon glyphicon-time"></span> Posted on {{ post.posted_date }}</p>
 
 <br/>
-<div class="summary-text">{{ post.text | safe | truncatewords:50 }} <a href="{% url 'post' pk=post.pk %}">
+<div class="summary-text">{{ post.text | safe | truncatewords:50 }} 
+    <br/><a href="{% url 'post' slug=post.slug %}">
 Click for more</a>
 </div>
 <hr>

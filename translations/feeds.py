@@ -24,4 +24,4 @@ class LatestChapters(Feed):
         return (item.content[:100] + '...') if len(item.content) > 100 else item.content
 
     def item_link(self, item):
-        return reverse('chapter_display', args=[item.pk])
+        return reverse('chapter_display', args=[item.project.slug, item.number])
