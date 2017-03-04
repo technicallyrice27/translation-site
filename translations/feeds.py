@@ -15,6 +15,9 @@ class LatestChapters(Feed):
         #title = item.project.title + ' - ' + item.project.jpengtitle + ' - ' + 'Chapter ' + item.number + ' - ' item.title
         title = '{} - {} - Chapter {} - {}'.format(item.project.title, 
         item.project.jpengtitle, item.number, item.title)
+        #import re
+        #title = re.sub('\Part \d$', '', title)  <- to remove Part 1, Part 2 etc from title
+        #title = re.sub('\Final$', '', title)  <- to remove Final from title
         return title
     
     def item_pubdate(self, item):
