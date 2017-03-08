@@ -106,12 +106,20 @@ a {
     font-family: 'Old Standard TT', serif;
 }
 
+.serif-font {
+    font-family: 'Sahitya', serif;
+    font-size: 100%;
+}
+
+.sans-font {
+    font-family: 'Open Sans';
+    font-size: 100%;
+}
+
 .contents p {
-    font-family: 'Sahitya', serif !important;
-    font-size: 110%;
-    line-height: 1.9;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    line-height: 1.8;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
 }
 
 .contents span {

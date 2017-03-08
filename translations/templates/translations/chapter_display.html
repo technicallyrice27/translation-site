@@ -11,6 +11,7 @@
     {% endif %}
 </div>
 <div class="date-posted">Posted: {{ chapter.posted_date }}</div>
+<a href="#" id="swapFontName" class="serif-font">Change to Sans</a>
 <br/>
 <nav aria-label="upper_nav">
     <ul class="pager">
@@ -31,7 +32,9 @@
     </a>
 </div>
 <br/>
+<div id="swapFont" class="serif-font">
 <div class="contents"> {{ chapter.content|safe }}</div>
+</div>
 <br/>
 <div class="toc-link">
     <a href="{% url 'project_page' pt=chapter.project.slug %}">
