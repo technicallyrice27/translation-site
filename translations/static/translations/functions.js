@@ -35,16 +35,4 @@ $(document).ready( function() {
        divElement.classList.toggle("dark-theme");
        sessionStorage.setItem('divTheme', divElement.classList);
     });
-
-    $("#swapColorsMobilexs").click( function(event) {
-        sessionStorage.clear();
-       var divElement = document.querySelector("#forTheme");
-       divElement.classList.toggle("light-theme");
-       divElement.classList.toggle("dark-theme");
-       sessionStorage.setItem('forTheme', divElement.classList);
-       var divElement = document.querySelector("#divTheme");
-       divElement.classList.toggle("light-theme");
-       divElement.classList.toggle("dark-theme");
-       sessionStorage.setItem('divTheme', divElement.classList);
-    });
 });
